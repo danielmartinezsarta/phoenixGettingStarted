@@ -8,11 +8,9 @@ defmodule RsvpWeb.Application do
   def start(_type, _args) do
     children = [
       # Start the Telemetry supervisor
-      RsvpWebWeb.Telemetry,
-      # Start the PubSub system
-      {Phoenix.PubSub, name: RsvpWeb.PubSub},
+      RsvpWeb.Telemetry,
       # Start the Endpoint (http/https)
-      RsvpWebWeb.Endpoint
+      RsvpWeb.Endpoint
       # Start a worker by calling: RsvpWeb.Worker.start_link(arg)
       # {RsvpWeb.Worker, arg}
     ]
@@ -26,7 +24,7 @@ defmodule RsvpWeb.Application do
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    RsvpWebWeb.Endpoint.config_change(changed, removed)
+    RsvpWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end

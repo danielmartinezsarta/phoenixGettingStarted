@@ -1,4 +1,4 @@
-defmodule RsvpWebWeb.ChannelCase do
+defmodule RsvpWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -11,7 +11,7 @@ defmodule RsvpWebWeb.ChannelCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use RsvpWebWeb.ChannelCase, async: true`, although
+  by setting `use RsvpWeb.ChannelCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -21,14 +21,20 @@ defmodule RsvpWebWeb.ChannelCase do
     quote do
       # Import conveniences for testing with channels
       import Phoenix.ChannelTest
-      import RsvpWebWeb.ChannelCase
+      import RsvpWeb.ChannelCase
 
       # The default endpoint for testing
-      @endpoint RsvpWebWeb.Endpoint
+      @endpoint RsvpWeb.Endpoint
     end
   end
 
-  setup _tags do
+  setup tags do
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Rsvp.Repo)
+
+    unless tags[:async] do
+      Ecto.Adapters.SQL.Sandbox.mode(Rsvp.Repo, {:shared, self()})
+    end
+
     :ok
   end
 end

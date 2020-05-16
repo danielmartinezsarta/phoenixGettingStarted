@@ -7,13 +7,14 @@ defmodule Rsvp.Application do
 
   def start(_type, _args) do
     children = [
-      # Starts a worker by calling: Rsvp.Worker.start_link(arg)
+      # Start the Ecto repository
+      Rsvp.Repo,
+      # Start the PubSub system
+      {Phoenix.PubSub, name: Rsvp.PubSub}
+      # Start a worker by calling: Rsvp.Worker.start_link(arg)
       # {Rsvp.Worker, arg}
     ]
 
-    # See https://hexdocs.pm/elixir/Supervisor.html
-    # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Rsvp.Supervisor]
-    Supervisor.start_link(children, opts)
+    Supervisor.start_link(children, strategy: :one_for_one, name: Rsvp.Supervisor)
   end
 end
