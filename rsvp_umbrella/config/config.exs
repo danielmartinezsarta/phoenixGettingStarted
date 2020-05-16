@@ -9,21 +9,18 @@
 # move said applications out of the umbrella.
 use Mix.Config
 
-# Configure Mix tasks and generators
-config :rsvp,
-  ecto_repos: [Rsvp.Repo]
+
 
 config :rsvp_web,
-  ecto_repos: [Rsvp.Repo],
   generators: [context_app: :rsvp]
 
 # Configures the endpoint
 config :rsvp_web, RsvpWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "nEXEYSKH9mKWywi87XN7r3krAQyrFCOVvQCdsVZjqoAhWzr7xjXLXeZz8cawCC8j",
+  secret_key_base: "8UUpUeLi9PbOpEF9R5EgAy2Y7KZpnStgfwrAT9qmZ1CO6NId7PRQTnQO7RCryKJd",
   render_errors: [view: RsvpWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Rsvp.PubSub,
-  live_view: [signing_salt: "x0k+TRKt"]
+  live_view: [signing_salt: "AFQ7FwDb"]
 
 # Configures Elixir's Logger
 config :logger, :console,

@@ -7,7 +7,7 @@ defmodule RsvpWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_rsvp_web_key",
-    signing_salt: "Bow1CBUi"
+    signing_salt: "qsGlNI3A"
   ]
 
   socket "/socket", RsvpWeb.UserSocket,
@@ -32,7 +32,6 @@ defmodule RsvpWeb.Endpoint do
     socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket
     plug Phoenix.LiveReloader
     plug Phoenix.CodeReloader
-    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :rsvp_web
   end
 
   plug Phoenix.LiveDashboard.RequestLogger,

@@ -7,8 +7,6 @@ defmodule Rsvp.Application do
 
   def start(_type, _args) do
     children = [
-      # Start the Ecto repository
-      Rsvp.Repo,
       # Start the PubSub system
       {Phoenix.PubSub, name: Rsvp.PubSub}
       # Start a worker by calling: Rsvp.Worker.start_link(arg)
