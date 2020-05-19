@@ -23,7 +23,7 @@ defmodule Rsvp.MixProject do
   def application do
     [
       mod: {Rsvp.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :postgrex, :ecto_sql]
     ]
   end
 
@@ -36,7 +36,9 @@ defmodule Rsvp.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix_pubsub, "~> 2.0"}
+      {:phoenix_pubsub, "~> 2.0"},
+      {:ecto_sql, "~> 3.4"},
+      {:postgrex, "~> 0.15.4"}
     ]
   end
 

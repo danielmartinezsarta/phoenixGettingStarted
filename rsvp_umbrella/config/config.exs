@@ -30,6 +30,16 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+#Ecto configuration for rspv app
+config :rsvp, Rsvp.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  database: "rsvp",
+  username: "postgres",
+  password: "150114"
+
+config :rsvp, ecto_repos: [Rsvp.Repo]
+
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

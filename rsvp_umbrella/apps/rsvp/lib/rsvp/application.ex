@@ -6,13 +6,15 @@ defmodule Rsvp.Application do
   use Application
 
   def start(_type, _args) do
+    import Supervisor.Spec, warn: false
+
     children = [
       # Start the PubSub system
-      {Phoenix.PubSub, name: Rsvp.PubSub}
+      {Phoenix.PubSub, name: Rsvp.PubSub},
       # Start a worker by calling: Rsvp.Worker.start_link(arg)
       # {Rsvp.Worker, arg}
+      worker(Rsvp.Repo, [])
     ]
-
     Supervisor.start_link(children, strategy: :one_for_one, name: Rsvp.Supervisor)
   end
 end
