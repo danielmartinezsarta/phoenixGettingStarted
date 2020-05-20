@@ -34,7 +34,7 @@ defmodule Rsvp.Events do
 
 	#define a private function to check if received date is past and call get_error function.
 	defp must_be_future(_, value) do
-		DateTime.compare(value, DateTime.utc_now())
+		NaiveDateTime.compare(value, NaiveDateTime.local_now(Calendar.ISO))
 		|> get_error
 	end
 
