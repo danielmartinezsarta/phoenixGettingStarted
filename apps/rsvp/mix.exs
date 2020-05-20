@@ -47,7 +47,9 @@ defmodule Rsvp.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      setup: ["deps.get"]
+      setup: ["deps.get"],
+      seed: ["run priv/repo/seed.exs"],
+      init: ["ecto.create", "ecto.migrate", "run priv/repo/seed.exs"]
     ]
   end
 end

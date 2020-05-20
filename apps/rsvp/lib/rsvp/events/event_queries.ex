@@ -6,6 +6,10 @@ defmodule Rsvp.EventQueries do
 	#We can set an alias for multiple modules at one time using curly brackets.
 	alias Rsvp.{Repo, Events}
 
+	def any do
+		Repo.one(from e in Events, select: count(e.id)) != 0
+	end
+
 	def get_all do
 		Repo.all(Events)
 	end
