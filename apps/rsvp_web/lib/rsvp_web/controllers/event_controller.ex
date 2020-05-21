@@ -11,5 +11,10 @@ defmodule RsvpWeb.EventController do
 		render conn, "details.html", event: event
 	end
 
+	def list(conn, _params) do
+		events = Rsvp.EventQueries.get_all()
+		render conn, "list.html", events: events
+	end
+
 
 end
